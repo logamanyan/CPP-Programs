@@ -1,0 +1,47 @@
+#include<iostream>
+using namespace std;
+//class Node
+class Node{
+    public:
+        int data;
+        Node *next;
+        Node(int val){
+            data=val;
+            next=nullptr;}};
+class LinkedList{
+    private:
+        Node *head;
+    public:
+        LinkedList(){
+            head=nullptr;}
+        void insertAtBeg(int val){
+            Node* newNode=new Node(val);
+            newNode->next=head;
+            head=newNode;
+        }
+        void insertAtEnd(int val){
+            Node* newNode=new Node(val);
+            Node *temp=head;
+            while(temp->next!=nullptr){
+                temp=temp->next;//4k->3k->2k->1k
+            }//temp=1000
+            temp->next=newNode;
+        }
+        void display(){
+            Node *temp=head;
+            while(temp!=nullptr){
+                cout<<temp->data<<"->";
+                temp=temp->next;//4k->3k->2k->1k
+            }//temp=1000 
+            cout<<"NULL";
+        }
+};
+int main(){
+    LinkedList ll;
+    ll.insertAtBeg(5);//1000
+    ll.insertAtBeg(6);//2000
+    ll.insertAtBeg(7);//3000
+    ll.insertAtBeg(8);//4000
+    ll.insertAtEnd(9);//5000
+    ll.display();//8->7->6->5->9->NULL
+}
